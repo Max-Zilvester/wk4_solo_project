@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<h1>Max's Gym Booking</h1>
+
+<p>Fitness is not a thought!</p>
+<div>
+    <form action="/gyms" method="post">
+        <fieldset style="width:360px">
+            <legend>Search Member</legend>
+            <br>
+            <p>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Add Name" required autofocus>
+            </p>
+            <button type="submit">Search Member</button>
+        </fieldset>
+    </form>
+</div>
+
+{% endblock %}
