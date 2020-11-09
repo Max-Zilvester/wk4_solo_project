@@ -10,7 +10,11 @@
             <legend>Member</legend>
             <p>
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Add Name" required autofocus>
+                <input type="text" id="name" name="name" placeholder="Enter Name" required autofocus>
+            </p>
+            <p>
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender" name="gender" placeholder="Enter Gender" required autofocus>
             </p>
             <!-- <p>
                 <label for="event">Event:</label>
@@ -29,7 +33,7 @@
         </fieldset>
     </form>
     {% for member in members %}
-    {{member.name}}
+    {{member.name}}: {{membe.gender}}
         
     {% endfor %}
 </div>

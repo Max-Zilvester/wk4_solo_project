@@ -1,10 +1,11 @@
 from db.run_sql import run_sql
 from models.member import Member
 from models.event import Event
+import repositories.member_repository as member_repository
 
 def save(event):
-    sql = "INSERT INTO events(name, type) VALUES ( %s, %s ) RETURNING id"
-    values = [event.name, event.type]
+    sql = "INSERT INTO events(name, category, status, member_id) VALUES ( %s, %s, %s, %s ) RETURNING *"
+    values = [event.name, event.category, event.status, event.member.id]
     results = run_sql( sql, values )
     event.id = results[0]['id']
     return event
@@ -17,7 +18,8 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        event = Event(row['name'], row['type'], row['id'])
+        member = member_repository.select(row['member_id'])
+        event = Event(row['name'], row['category'], row['status'], member, row['id'])
         events.append(event)
     return events
 
@@ -29,19 +31,20 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        event = Event(result['name'], result['type'], result['id'] )
+        member = member_repository.select(result['member_id'])
+        event = Event(result['name'], result['category'], result['status'], member, result['id'] )
     return event
 
 
 def members(event):
     members = []
 
-    sql = "SELECT members.* FROM members INNER JOIN gyms ON gyms.member_id = members.id WHERE event_id = %s"
+    sql = "SELECT * FROM members WHERE event_id = %s"
     values = [event.id]
     results = run_sql(sql, values)
 
     for row in results:
-        member = Member(row['name'], row['id'])
+        member = Member(row['name'], row['gender'], row['id'])
         members.append(member)
 
     return members
@@ -50,3 +53,9 @@ def members(event):
 def delete_all():
     sql = "DELETE FROM events"
     run_sql(sql)
+
+def update(event):
+    sql = "UPDATE events SET (title, genre, publisher, author_id) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [event.title, event.genre, event.publisher, event.author.id, event.id]
+    print(values)
+    run_sql(sql, values)

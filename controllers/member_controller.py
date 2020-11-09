@@ -12,9 +12,10 @@ def members():
 
 
 @members_blueprint.route("/members/new",  methods=['GET'])
-def create_show_member():
+def display_show_member():
     name = request.form["name"]
-    member = Member(name)
+    gender = request.form["gender"]
+    member = Member(name, gender)
     return render_template("members/index.html")
 
     
@@ -23,7 +24,8 @@ def create_show_member():
 @members_blueprint.route("/members/new",  methods=['POST'])
 def create_member():
     name = request.form["name"]
-    member = Member(name)
+    gender = request.form["gender"]
+    member = Member(name, gender)
     member_repository.save(member)
     return redirect("/members")
     

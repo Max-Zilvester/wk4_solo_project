@@ -1,6 +1,8 @@
 class Event:
 
-    def __init__(self, name, type, id = None):
+    def __init__(self, name, category, status, member, id = None):
         self.name = name
-        self.type = type
+        self.category = category
+        self.status = status
+        self.member = member
         self.id = id

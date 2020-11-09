@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/events/new" method="post">
+        <fieldset style="width:360px">
+            <legend>Create New Event</legend>
+            <p>
+                <label for="name">Event Name:</label>
+                <input type="text" id="name" name="name" placeholder="Add Name" required autofocus>
+            </p>
+            <p>
+                <label for="category">Event Category:</label>
+                <select name="category" id="category">
+                <option value="dance">Dance</option>
+                <option value="exercise">Exercise</option>
+                <option value="sports">Sports</option>
+                </select>
+            </p>
+            <p>
+                <label for="status">Event Status:</label>
+                <select name="status" id="status">
+                <option value="Booked">Booked</option>
+                <option value="Open">Open</option>
+                <option value="Upcoming">Upcoming</option>
+                </select>
+            </p>
+            <button type="submit">Add Member</button>
+        </fieldset>
+
+    {% for event in events %}
+    {{event.name}}: {{event.category}}: {{event.status}}
+        
+    {% endfor %}
+</form>
+
+    
+
+
+{% endblock %}
