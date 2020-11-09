@@ -10,10 +10,20 @@ def members():
     members = member_repository.select_all() # NEW
     return render_template("members/index.html", members = members)
 
+
+@members_blueprint.route("/members/new",  methods=['GET'])
+def create_show_member():
+    name = request.form["name"]
+    member = Member(name)
+    return render_template("members/index.html")
+
+    
+#     return render_template("members/new.html")
+
 @members_blueprint.route("/members/new",  methods=['POST'])
 def create_member():
     name = request.form["name"]
-     member = Member(name)
+    member = Member(name)
     member_repository.save(member)
     return redirect("/members")
     

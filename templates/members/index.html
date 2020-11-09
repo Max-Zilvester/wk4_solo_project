@@ -5,20 +5,22 @@
 
 <p><h4>View Members Here</h4></p>
 <div>
-            <!-- <p>
-                <label for="event">Event:</label>
-                <input type="text" id="event" name="event" placeholder="Add Event" required autofocus>
-            </p>
+    <!-- <form action="/members/new" method="post">
+        <fieldset style="width:360px">
+            <legend>Member</legend>
             <p>
-
-                <label for="type">Event Category:</label>
-                <select id="type" name="type">
-                <option value="dance">Dance</option>
-                <option value="exercise">Exercise</option>
-                <option value="sport">Sport</option>
-                </select> 
-            </p> USE FOR EVENTS-->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Add Name" required autofocus>
+            </p>
            
-    
+        
+            <button type="submit">Add Member</button>
+        </fieldset>
+    </form> -->
+    {% for member in members %}
+    {{member.name}}
+        
+    {% endfor %}
+</div>
 
 {% endblock %}
