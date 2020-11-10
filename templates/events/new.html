@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form action="/events/new" method="post">
+<form action="/events" method="post">
         <fieldset style="width:360px">
             <legend>Create New Event</legend>
             <p>
@@ -25,16 +25,18 @@
                 <option value="Upcoming">Upcoming</option>
                 </select>
             </p>
-            <button type="submit">Add Member</button>
+            <div>
+                <label for="member">Member:</label>
+                <select name="member_id" id="member">
+                {% for member in members %}
+                <option value="{{ member.id }}">{{ member.name }}</option>
+                {% endfor %}
+                </select>
+                
+            </div>
+            <p>
+            <button type="submit">Add Event</button>
+            </p>
         </fieldset>
-
-    {% for event in events %}
-    {{event.name}}: {{event.category}}: {{event.status}}
-        
-    {% endfor %}
 </form>
-
-    
-
-
 {% endblock %}

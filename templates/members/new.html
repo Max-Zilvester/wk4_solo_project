@@ -5,7 +5,7 @@
 
 <p><h4>View Members Here</h4></p>
 <div>
-    <form action="/members/new" method="post">
+    <form action="/members" method="post">
         <fieldset style="width:360px">
             <legend>Member</legend>
             <p>
@@ -31,11 +31,13 @@
             </p> USE FOR EVENTS-->
             <button type="submit">Add Member</button>
         </fieldset>
-    </form>
-    {% for member in members %}
-    {{member.name}}: {{membe.gender}}
+
+        {% for member in members %}
+        {{member.name}}: {{member.gender}}
         
-    {% endfor %}
+        {% endfor %}
+    </form>
+    
 </div>
 
 {% endblock %}

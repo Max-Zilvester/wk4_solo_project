@@ -55,7 +55,7 @@ def delete_all():
     run_sql(sql)
 
 def update(event):
-    sql = "UPDATE events SET (title, genre, publisher, author_id) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [event.title, event.genre, event.publisher, event.author.id, event.id]
+    sql = "UPDATE events SET (name, category, status, member_id) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [event.name, event.category, event.status, event.member.id, event.id]
     print(values)
     run_sql(sql, values)

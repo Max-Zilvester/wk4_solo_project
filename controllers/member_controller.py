@@ -8,7 +8,7 @@ members_blueprint = Blueprint("members", __name__)
 @members_blueprint.route("/members")
 def members():
     members = member_repository.select_all() # NEW
-    return render_template("members/index.html", members = members)
+    return render_template("members/index.html", members=members)
 
 
 @members_blueprint.route("/members/new",  methods=['GET'])
