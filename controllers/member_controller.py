@@ -5,6 +5,8 @@ import repositories.member_repository as member_repository
 
 members_blueprint = Blueprint("members", __name__)
 
+
+# INDEX - View all Members (classes) along with member type
 @members_blueprint.route("/members")
 def members():
     members = member_repository.select_all() # NEW
@@ -13,10 +15,7 @@ def members():
 
 @members_blueprint.route("/members/new",  methods=['GET'])
 def display_show_member():
-    name = request.form["name"]
-    gender = request.form["gender"]
-    member = Member(name, gender)
-    return render_template("members/index.html")
+    return render_template("members/new.html")
 
     
 #     return render_template("members/new.html")
@@ -33,7 +32,6 @@ def create_member():
     # event = request.form['event'] USE $ EVENTS
     # type = request.form['type']
 
-   
 
 # def create_task():
 #     member_id = request.form['member_id']

@@ -3,11 +3,11 @@
 {% block content %}
 
 
-{ {% for event in events %}
- <p>
-     {{event.name}}
- </p>   
-{% endfor %}}
+{% for event in events %}
+<p>
+    {{event.name}} : {{event.category}} : {{event.status}} 
+</p>   
+{% endfor %}
 
 
 

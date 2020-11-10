@@ -4,22 +4,12 @@
 <h1>Member Area</h1>
 
 <p><h4>View Members Here</h4></p>
-<div>
-    <!-- <form action="/members/new" method="post">
-        <fieldset style="width:360px">
-            <legend>Member</legend>
-            <p>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Add Name" required autofocus>
-            </p>
-        
-            <button type="submit">Add Member</button>
-        </fieldset>
-    </form> -->
+<p>
     {% for member in members %}
-    {{member.name}}
+    {{member.name}} : {{member.gender}}
+</p>
+
         
     {% endfor %}
-</div>
 
 {% endblock %}

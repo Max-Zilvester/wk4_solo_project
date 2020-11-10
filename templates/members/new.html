@@ -29,13 +29,15 @@
                 <option value="sport">Sport</option>
                 </select> 
             </p> USE FOR EVENTS-->
+
+            {% for member in members %}
+            {{member.name}}: {{member.gender}}
+        
+            {% endfor %}
             <button type="submit">Add Member</button>
         </fieldset>
 
-        {% for member in members %}
-        {{member.name}}: {{member.gender}}
         
-        {% endfor %}
     </form>
     
 </div>

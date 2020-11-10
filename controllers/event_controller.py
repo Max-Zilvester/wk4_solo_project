@@ -14,6 +14,7 @@ events_blueprint = Blueprint("events", __name__)
 def events():
     events = event_repository.select_all() # NEW
     return render_template("events/index.html", events=events)
+    
 
 # GET new event
 @events_blueprint.route("/events/new")
