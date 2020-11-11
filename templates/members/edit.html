@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/members/{{member.id}}" method="post">
+        <fieldset style="width:360px">
+            <legend>Member</legend>
+            <p>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="{{member.name}}" required autofocus>
+            </p>
+            <p>
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender" name="gender" value="{{member.gender}}" required autofocus>
+            </p>
+            <!-- <p>
+                <label for="event">Event:</label>
+                <input type="text" id="event" name="event" placeholder="Add Event" required autofocus>
+            </p>
+            <p>
+
+                
+            </p> USE FOR EVENTS-->
+
+                {% for event in events %}
+                <option value="{{ event.id }}">{{ event.name }}</option>
+
+                {% endfor %}
+            <button type="submit">Update Member</button>
+        </fieldset>
+
+</form>
+{% endblock %}

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}"> 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
   <div class="header">
     <h1>Max's Gym</h1>
     <main class="flex flex--row">
@@ -37,6 +38,21 @@
 
 {% endblock%}
 </body>
+<footer>
+  <div>
+    <p>
+      <ul>
+      <!-- <ul id="horizontal-link"> -->
+        <li><a href="/members/new">New Member</a></li>
+        <li><a href="/members/4/edit">Update Member</a></li>
+        <li><a href="/event/new">New Event</a></li>
+        <li><a href="/events/2/edit">Update Event</a></li>
+      <!-- </ul> -->
+    </ul>
+    </p>
+  </div>
+  
+</footer>  
 </html>
 
       

@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.member import Member
 import repositories.member_repository as member_repository
+import repositories.event_repository as event_repository
 
 members_blueprint = Blueprint("members", __name__)
 
@@ -20,15 +21,36 @@ def display_show_member():
     
 #     return render_template("members/new.html")
 
-@members_blueprint.route("/members/new",  methods=['POST'])
+@members_blueprint.route("/members",  methods=['POST'])
 def create_member():
     name = request.form["name"]
     gender = request.form["gender"]
     member = Member(name, gender)
     member_repository.save(member)
     return redirect("/members")
+
+# EDIT
+# GET '/members/<id>/edit'
+@members_blueprint.route("/members/<id>/edit", methods=['GET'])
+def edit_member(id):
+    member = member_repository.select(id)
+    event = event_repository.select_all()
+    return render_template('members/edit.html', event=event, member=members)
     
+
+# UPDATE
+@members_blueprint.route("/members/<id>", methods=['POST'])
+def update_member(id):
+    name    = request.form['name']
+    gender = request.form['gender']
+    event_id = request.form['event_id']
+    # member  = member_repository.select()
     
+    event = event_repository.select(event_id)
+    member = Member(name, gender, id)
+    member_repository.update(member)
+    return redirect('/members')
+
     # event = request.form['event'] USE $ EVENTS
     # type = request.form['type']
 

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/events/{{event.id}}" method="post">
+        <fieldset style="width:360px">
+            <legend>Update Event</legend>
+            <p>
+                <label for="name">Event Name:</label>
+                <input type="text" id="name" name="name" value="{{event.name}}" required autofocus>
+            </p>
+            <p>
+                <label for="category">Event Category:</label>
+                <select name="category" id="category">
+                <option value="dance">Dance</option>
+                <option value="exercise">Exercise</option>
+                <option value="sports">Sports</option>
+                </select>
+            </p>
+            <p>
+                <label for="status">Event Status:</label>
+                <select name="status" id="status">
+                <option value="booked">Booked</option>
+                <option value="open">Open</option>
+                <option value="upcoming">Upcoming</option>
+                </select>
+            </p>
+            <div>
+                <label for="member">Member:</label>
+                <select name="member_id" id="member">
+                {% for member in members %}
+                <option value="{{ member.id }}">{{ member.name }}
+                    <!-- {% if event.member.id==member.id %}
+                    {% endif %} -->
+                    
+                </option>
+                {% endfor %}
+                </select>
+                
+            </div>
+            <p>
+            <button type="submit">Update Event</button>
+            </p>
+        </fieldset>
+</form>
+{% endblock %}

@@ -25,7 +25,7 @@ def select_all():
 
 
 def select(id):
-    event = None
+    # event = None
     sql = "SELECT * FROM events WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
